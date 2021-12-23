@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:hospital_ui/constants.dart';
+import 'package:hospital_ui/models/sign_out.dart';
 
 import 'package:hospital_ui/screens/appointment.dart';
+import 'package:hospital_ui/screens/doctor_page.dart';
 import 'package:hospital_ui/screens/profile_page.dart';
-import 'package:hospital_ui/screens/welcome/welcome_screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:bottom_navy_bar/bottom_navy_bar.dart';
 
@@ -13,88 +14,8 @@ import 'package:hospital_ui/widgets/textbox.dart';
 import 'package:hospital_ui/widgets/popular_doctor.dart';
 import 'package:hospital_ui/widgets/category_box.dart';
 
-class HomePage2 extends StatefulWidget {
-  const HomePage2({Key? key}) : super(key: key);
 
-  @override
-  _HomePage2State createState() => _HomePage2State();
-}
 
-class _HomePage2State extends State<HomePage2> {
-  late String username;
-
-  @override
-  void initState() {
-    // TODO: implement initState
-    super.initState();
-    initial();
-  }
-
-  void initial() async {
-    final prefs = await SharedPreferences.getInstance();
-    setState(() {
-      username = prefs.getString('username') ?? 'error';
-    });
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.all(20.0),
-          child: Center(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: [
-                const Text('HomePage'),
-                SignOut(),
-                ElevatedButton(
-                  onPressed: () {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => ProfilePage()));
-                  },
-                  child: const Text('Profile'),
-                ),
-
-                ElevatedButton(
-                  onPressed: () {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => AppointmentPage()));
-                  },
-                  child: const Text('Appointment'),
-                ),
-              ],
-            ),
-          ),
-        ),
-      ),
-    );
-  }
-}
-
-class SignOut extends StatelessWidget {
-  const SignOut({
-    Key? key,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return ElevatedButton(
-      onPressed: () async {
-        final prefs = await SharedPreferences.getInstance();
-        prefs.setBool('login', true);
-        prefs.setString('username', 'error');
-        Navigator.pushReplacement(
-            context,
-            MaterialPageRoute(
-                builder: (context) => const WelcomeScreen()));
-      },
-      child: const Text('Sign Out'),
-    );
-  }
-}
 
 
 class Home extends StatefulWidget {
@@ -105,7 +26,7 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-  List<Widget> _pages = [HomePage2(), Container(),  AppointmentPage(), ProfilePage()];
+  List<Widget> _pages = [HomePage(), DoctorPage(),  AppointmentPage(), ProfilePage()];
 
   int _currentIndex = 0;
   PageController _pageController = new PageController(initialPage: 0);
@@ -170,6 +91,21 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  //  String username='';
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    // initial();
+  }
+
+  // void initial() async {
+  //   final prefs = await SharedPreferences.getInstance();
+  //   setState(() {
+  //     username = prefs.getString('username') ?? 'User';
+  //   });
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -179,6 +115,8 @@ class _HomePageState extends State<HomePage> {
         elevation: 0,
         backgroundColor: Colors.transparent,
         actions: [
+          SignOut(),
+          SizedBox(width: 20),
           Container(
             padding: EdgeInsets.only(right: 10),
             child: Badge(
@@ -201,7 +139,12 @@ class _HomePageState extends State<HomePage> {
           child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Container(child: Text("Hi,", style: TextStyle(fontSize: 23, color: kPrimary, fontWeight: FontWeight.w500),),),
+                Row(
+                  children: [
+                    Container(child: Text("Hi,", style: TextStyle(fontSize: 23, color: kPrimary, fontWeight: FontWeight.w500),),),
+                    Text('User'),
+                  ],
+                ),
                 SizedBox(height: 5,),
                 Container(child: Text("Let's Find Your Doctor", style: TextStyle(fontSize: 18, fontWeight: FontWeight.w600),)),
                 SizedBox(height: 15,),

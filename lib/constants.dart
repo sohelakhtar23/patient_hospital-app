@@ -31,6 +31,10 @@ const requiredField = "This field is required";
 // );
 
 String baseApi = 'http://phr21.herokuapp.com/api/v1/patient-accounts/login/';
+String Api = 'http://phr21.herokuapp.com/api/v1/';
+
+String target_UrlProfile = 'patient-accounts/me/profile/';
+String target_Appointment = 'appointments/';
 
 const kPopupTextStyle = TextStyle(
   fontSize: 20.0,

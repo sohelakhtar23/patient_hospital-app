@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import '../../../constants.dart';
 
 class SignUpForm extends StatelessWidget {
-   SignUpForm({
+  SignUpForm({
     Key? key,
     required this.formKey,
   }) : super(key: key);
@@ -22,8 +22,8 @@ class SignUpForm extends StatelessWidget {
         children: [
           TextFieldName(text: "Username"),
           TextFormField(
-            decoration: InputDecoration(hintText: "theflutterway"),
-            
+            // decoration: InputDecoration(hintText: "theflutterway"),
+
             // Let's save our username
             onSaved: (username) => _userName = username!,
           ),
@@ -35,18 +35,9 @@ class SignUpForm extends StatelessWidget {
           TextFormField(
             keyboardType: TextInputType.emailAddress,
             decoration: InputDecoration(hintText: "test@email.com"),
-            
             onSaved: (email) => _email = email!,
           ),
-          const SizedBox(height: defaultPadding),
-          TextFieldName(text: "Phone"),
-          // Same for phone number
-          TextFormField(
-            keyboardType: TextInputType.phone,
-            decoration: InputDecoration(hintText: "+123487697"),
-            
-            onSaved: (phoneNumber) => _phoneNumber = phoneNumber!,
-          ),
+
           const SizedBox(height: defaultPadding),
           TextFieldName(text: "Password"),
 
@@ -54,18 +45,55 @@ class SignUpForm extends StatelessWidget {
             // We want to hide our password
             obscureText: true,
             decoration: InputDecoration(hintText: "******"),
-            
+
             onSaved: (password) => _password = password!,
             // We also need to validate our password
             // Now if we type anything it adds that to our password
             onChanged: (pass) => _password = pass,
           ),
           const SizedBox(height: defaultPadding),
-          TextFieldName(text: "Confirm Password"),
+          // TextFieldName(text: "Confirm Password"),
+          // TextFormField(
+          //   obscureText: true,
+          //   decoration: InputDecoration(hintText: "******"),
+
+          // ),
+
+          const SizedBox(height: defaultPadding),
+          TextFieldName(text: "Phone"),
+          // Same for phone number
           TextFormField(
-            obscureText: true,
-            decoration: InputDecoration(hintText: "*****"),
+            keyboardType: TextInputType.phone,
+            // decoration: InputDecoration(hintText: "+123487697"),
+
+            onSaved: (phoneNumber) => _phoneNumber = phoneNumber!,
+          ),
+          const SizedBox(height: defaultPadding),
+          TextFieldName(text: "Gender"),
+          // Same for phone number
+          TextFormField(
             
+            // decoration: InputDecoration(hintText: "+123487697"),
+            
+            // onSaved: (phoneNumber) => _phoneNumber = phoneNumber!,
+          ),
+          const SizedBox(height: defaultPadding),
+          TextFieldName(text: "Blood Group"),
+          // Same for phone number
+          TextFormField(
+            // keyboardType: TextInputType.phone,
+            // decoration: InputDecoration(hintText: "+123487697"),
+            
+            // onSaved: (phoneNumber) => _phoneNumber = phoneNumber!,
+          ),
+          const SizedBox(height: defaultPadding),
+          TextFieldName(text: "DOB"),
+          // Same for phone number
+          TextFormField(
+            // keyboardType: TextInputType.phone,
+            // decoration: InputDecoration(hintText: "+123487697"),
+            
+            // onSaved: (phoneNumber) => _phoneNumber = phoneNumber!,
           ),
         ],
       ),

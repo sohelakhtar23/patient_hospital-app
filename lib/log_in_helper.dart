@@ -61,7 +61,7 @@ class _CheckUserState extends State<CheckUser> {
       Navigator.pop(context);
 
       Navigator.push(
-          context, MaterialPageRoute(builder: (context) => HomePage()));
+          context, MaterialPageRoute(builder: (context) => Home()));
 
       final prefs = await SharedPreferences.getInstance();
       prefs.setBool('login', false);
@@ -99,7 +99,7 @@ class _CheckUserState extends State<CheckUser> {
   @override
   Widget build(BuildContext context) {
     return const Scaffold(
-      body: CircularProgressIndicator(),
+      body: Center(child: CircularProgressIndicator()),
     );
   }
 }

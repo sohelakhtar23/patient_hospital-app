@@ -58,7 +58,7 @@ class _LogSignUpState extends State<LogSignUp> {
     print('$newuser, $loggedUser ');
     if (newuser == false) {
       Navigator.pushReplacement(
-          context, MaterialPageRoute(builder: (context) => HomePage()));
+          context, MaterialPageRoute(builder: (context) => Home()));
     }
   }
 

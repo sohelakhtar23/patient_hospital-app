@@ -53,7 +53,7 @@ class SignUpScreen extends StatelessWidget {
                         ),
                       ],
                     ),
-                    const SizedBox(height: defaultPadding * 2),
+                    // const SizedBox(height: defaultPadding * 2),
                     SignUpForm(formKey: _formKey),
                     const SizedBox(height: defaultPadding * 2),
                     SizedBox(

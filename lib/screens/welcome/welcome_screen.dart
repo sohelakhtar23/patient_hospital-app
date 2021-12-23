@@ -25,12 +25,12 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
   void check_if_already_login() async {
     final prefs = await SharedPreferences.getInstance();
     newuser = (prefs.getBool('login') ?? true);
-    String loggedUser = (prefs.getString('username') ?? '');
+    // String loggedUser = (prefs.getString('username') ?? '');
 
-    print('$newuser, $loggedUser ');
+    print('login: $newuser');
     if (newuser == false) {
       Navigator.pushReplacement(
-          context, MaterialPageRoute(builder: (context) => HomePage()));
+          context, MaterialPageRoute(builder: (context) => Home()));
     }
   }
 
@@ -52,7 +52,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                   // ),
 
                   const Text(
-                    'Medico',
+                    'Personal Medico',
                     style: TextStyle(
                         fontSize: 50,
                         fontWeight: FontWeight.bold,
